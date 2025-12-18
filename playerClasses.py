@@ -17,16 +17,7 @@ class player:
             "evasiveness": self.evasiveness
         }
         return stats
-# class playerClasses:
-#     def __init__(self,HP,speed,attack,defense,evasiveness,inventory,equipped,moves):
-#         self.HP = HP
-#         self.speed = speed
-#         self.attack = attack
-#         self.defense = defense
-#         self.evasiveness = evasiveness
-#         self.inventory = inventory
-#         self.equippted = equipped
-#         self.moves = moves
+
 name = input("What is your name?")
 chosenClass = input("What class are you?")
     
