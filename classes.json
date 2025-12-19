@@ -1,5 +1,9 @@
+<<<<<<< Updated upstream
 prebuiltClasses = [
     {
+=======
+[    {
+>>>>>>> Stashed changes
         "name":"Melee",
         "HP":80,
         "speed":80,
