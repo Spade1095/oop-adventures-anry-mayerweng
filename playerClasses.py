@@ -55,17 +55,19 @@ class character:
             "evasiveness": self.evasiveness
         }
         return stats
+    def returnInventory(self):
+        return self.inventory
+    def returnEquipped(self):
+        return self.equippted
 classNames = []
 for i in range(len(classes)):
     classNames.append(classes[i]["name"])
 
 name = input("What is your name?")
-chosenClass = input(f"What class are you?{classNames}")
-for i in range(len(classes)):
+chosenClass = input(f"What class are you?{classNames} ")
+for I in range(len(classes)):
     for i in range(len(classes)):
         if classes[i]["name"] == chosenClass:
             chosenData = classes[i]
-            player = character(name,chosenData["HP"],chosenData["speed"],chosenData["attack"],chosenData["defense"],chosenData["evasiveness"],chosenData["inventory"],chosenData["moves"])
-
-
+            player = character(name,chosenData["HP"],chosenData["speed"],chosenData["attack"],chosenData["defense"],chosenData["evasiveness"],chosenData["inventory"],chosenData["equipped"],chosenData["moves"])
 
