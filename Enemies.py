@@ -1,4 +1,5 @@
-import random
+import random as r
+
 
 zombie_names = [
     "Shambling Corpse",
@@ -21,74 +22,110 @@ skeleton_names = [
     "Crypt Rattler"
 ]
 
+Vampire_names = ["Draven", "Lilith", "Lucien", "Nyx", "Vesper"]
+
+Vampire_lootdrops = ["Vampire Essence",
+                      "Silver helment", 
+                      "Silver Leggings", 
+                      "Silver Chestplate"]
+
+Zombie_lootdrops = ["Flesh",
+                     "Iron",
+                     "Zombie Head", 
+                     "Ripped Shirt"]
+
+Skeleton_lootdrops = ["Bones",
+                      "Chainmail "
+                      "Skeleton head",
+                      "Goggles"]
+
+
+mob1 = [
+    {
+        "name": "Zombie",
+        "hp":r.randint(50,70), 
+        "attack":r.randint(4,7), 
+        "mob_name": r.choice(zombie_names), 
+        "lootdrops":r.choice(Zombie_lootdrops), 
+        "speed":r.randint(1,2), 
+        "defense":r.randint(2,6),
+        "chance":r.randint(1,4),
+        "debuff": None,
+        "debuffmulti": 1
+    },
+    {
+        "name": "Vampire",
+        "hp":r.randint(60,100), 
+        "attack":r.randint(3,6), 
+        "mob_name": r.choice(Vampire_names), 
+        "lootdrops":r.choice(Vampire_lootdrops), 
+        "speed":r.randint(4,7), 
+        "defense":r.randint(1,4),
+        "chance":r.randint(1,6),
+        "debuff": None,
+        "debuffmulti": 1
+    },
+    {
+    "name": "Skeleton",
+        "hp":r.randint(30,50), 
+        "attack":r.randint(5,9), 
+        "mob_name": r.choice(skeleton_names), 
+        "lootdrops":r.choice(Skeleton_lootdrops), 
+        "speed":r.randint(2,3), 
+        "defense":r.randint(1,4),
+        "chance":r.randint(1,5),
+        "debuff": None,
+        "debuffmulti": 1
+    }
+]
+        
+
+
+
 
 invetory =[]
 
-class Undead:
-    debuffactive = True
-    if debuffactive == False:
-        debuffmulti = 1
-    else:
-        debuffmulti = .8
 
-class Zombie(Undead):
-    def __init__(self,name):
-        self.level = random.randint(1, 3)
-        self.name = name
-        self.health = int(100 * (self.level * .40))
-        self.attack = 4 + self.level
-        self.speed = self.level
-        self.defense = int(3 * self.level * self.debuffmulti)
 
+class mob():
+    def __init__(self, levelmin,levelmax, mob_name ,health,attack,speed,defense,lootdrops,chance,debuff,debuffmulti,moves):
+        self.level = r.randint(levelmin, levelmax)
+        self.name = mob_name
+        self.health = int(health * (self.level * .40))
+        self.attack = attack + self.level
+        self.speed = speed + self.level
+        self.debuffmulti = debuffmulti
+        self.defense = int(defense * self.level * self.debuffmulti)
+        self.lootdrops = lootdrops
+        self.chance = chance
+        self.debuff = debuff
+        self.moves = moves
     def lootdrop(self):
-        lootdrops = ["Flesh", "Iron","Zombie Head", "Ripped Shirt"]
-        chance = random.randint(1,4)
+        chance = r.randint(1,chance)
         if chance == 1:
-            loot = random.choice(lootdrops)
+            loot = r.choice(self.lootdrops)
             return loot
-    moves = ["Bite", "Stinky Breath"]
-
-class Skeleton(Undead):
-    def __init__(self,name):
-        self.level = random.randint(1, 5)
-        self.name = name
-        self.health = int(60 * (self.level * .40))
-        self.attack = 7 + self.level
-        self.speed = self.level
-        self.defense = int(1 * self.level * self.debuffmulti)
-
-    def lootdrop(self):
-        lootdrops = ["Bone", "Bow","Skeleton Head", "Chainmail Pants"]
-        chance = random.randint(1,6)
-        if chance == 1:
-            loot = random.choice(lootdrops)
-            return loot
-    moves = ["Arrow Attack", "Long Shot"]
-
-class Wither(Undead):
-    def __init__(self,name):
-            self.level = random.randint(5, 10)
-            self.name = name
-            self.health = int(150 * (self.level * .40))
-            self.attack = 6 + self.level
-            self.speed = self.level
-            self.defense = int(7 * self.level * self.debuffmulti)
-
-    def lootdrop(self):
-        lootdrops = ["Wither Essence", "Iron helment", "Iron Leggings", "Iron Chestplate","Wither Artifact"]
-        chance = random.randint(1,7)
-        if chance == 1:
-            loot = random.choice(lootdrops)
-            return loot
-    moves = ["Stab", "Blind Potion", "Screech"]
+    def Alive(self):
+        if self.health > 0:
+            return True
+        else:
+            return False
+    def Dodamage(self, attack):
+        self.health -= attack
 
 
 
-
-
-
-zombie = Zombie(random.choice(zombie_names))
-skeleton = Skeleton(random.choice(skeleton_names))
+zombie = mob(1,5,
+             r.choice(zombie_names)
+             ,r.randint(50,70)
+             ,r.randint(4,7)
+             ,r.randint(3,6)
+             ,r.randint(2,6)
+             ,r.choice(Zombie_lootdrops),
+             4,
+             None,
+             1,
+             )
 
 print(zombie.name)
 zombie.lootdrop()
