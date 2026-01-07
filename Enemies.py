@@ -120,6 +120,7 @@ class mob():
             return False
     def doDamage(self, attack):
         self.health -= attack
+        self.health = round(self.health,1)
     def returnStats(self):
         stats = {
             "attack":self.attack,
@@ -130,6 +131,10 @@ class mob():
         return stats
     def returnMoves(self):
         return self.moves
+    def returnHP(self):
+        return self.health
+    def returnName(self):
+        return self.name
 
 
 

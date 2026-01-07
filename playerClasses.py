@@ -66,7 +66,7 @@ class character:
     def addToInventory(self,item):
         self.inventory.append(item)
     def doDmg(self,dmg):
-        self.HP = self.HP - dmg
+        self.HP = round(self.HP - dmg,1)
     def heal(self,heal):
         self.HP = self.HP + heal
         if self.HP > self.maxHP:
@@ -78,6 +78,8 @@ class character:
             return False
     def returnMoves(self):
         return self.moves
+    def returnHP(self):
+        return self.HP
 # classNames = []
 # for i in range(len(classes)):
 #     classNames.append(classes[i]["name"])
