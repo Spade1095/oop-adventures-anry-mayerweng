@@ -47,7 +47,7 @@ class character:
         self.attack = attack
         self.defense = defense
         self.evasiveness = evasiveness
-        self.inventory = inventory
+        self.player_invetory = inventory
         self.equippted = equipped
         self.moves = moves
         self.name = name
@@ -60,11 +60,11 @@ class character:
         }
         return stats
     def returnInventory(self):
-        return self.inventory
+        return self.player_invetory
     def returnEquipped(self):
         return self.equippted
     def addToInventory(self,item):
-        self.inventory.append(item)
+        self.player_invetory.append(item)
     def doDmg(self,dmg):
         self.HP = round(self.HP - dmg,1)
     def heal(self,heal):
