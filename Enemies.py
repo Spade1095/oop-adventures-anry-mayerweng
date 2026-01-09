@@ -135,7 +135,10 @@ class mob():
         return self.health
     def returnName(self):
         return self.name
-
+    def heal(self,heal):
+        self.HP = self.HP + heal
+        if self.HP > self.maxHP:
+            self.HP = self.maxHP
 
 
 # zombie = mob(1,5,

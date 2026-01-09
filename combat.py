@@ -6,26 +6,52 @@ moves = [
         "name":"Bite",
         "dmg":20,
         "accuracy":1,
-        "type":"undead"
+        "type":"undead",
         "heal":10,
+        "attackChangeS":None,
+        "attackChangeE":None,
+        "defenseChangeS":None,
+        "defenseChangeE":None,
+        "speeedChangeS":None,
+        "speedChangeE":None
     },
         {
         "name":"Basic Sword",
         "dmg":30,
         "accuracy":1,
         "type":"normal",
-        "heal": None
-    },
+        "heal": None,
+        "attackChangeS":None,
+        "attackChangeE":None,
+        "defenseChangeS":None,
+        "defenseChangeE":None,
+        "speeedChangeS":None,
+        "speedChangeE":None
+    }
 ]
 class battleStuff:
     def noNeg(num):
         if num < 0:
             return 0
         return num
-    def heal(who,move,mobOrPlayer):
-        if move is not None:
-            if mobOrPlayer == "mob":
-                
+    def heal(who,move):
+        if move["heal"] is not None:
+            who.heal(move["heal"])
+            print(f"{who.name} healed!")
+        return who
+    def atkChange(who,move,selfOrEnemie):
+        if move["attackChange"+ selfOrEnemie] is not None:
+            who.attack = who.attack + move["attackChange"+ selfOrEnemie]
+        return who
+    def defChange(who,move,selfOrEnemie):
+        if move["defenseChange"+ selfOrEnemie] is not None:
+            who.attack = who.attack + move["defenseChange"+ selfOrEnemie]
+        return who
+    def speedChange(who,move,selfOrEnemie):
+        if move["speedChange"+ selfOrEnemie] is not None:
+            who.attack = who.attack + move["speedChange"+ selfOrEnemie]
+        return who
+    
     def playerAttack(playerMoves,playerStats,enemieStats,enemie):
         for i in range(len(playerMoves)):
             print(f"{i+1}: {playerMoves[i]}")
