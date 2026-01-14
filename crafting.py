@@ -1,4 +1,4 @@
-
+from playerClasses import character as pchar
 
 
 
@@ -32,7 +32,7 @@ class craftingfunc():
 
     def inputmats(self):
         global playerinvecopy
-        playerinvecopy = player_invetory.copy()
+        playerinvecopy = player.returnInvetory.copy()
         print("----------------------------------------------------------------------------------------")
         print("EXAMPLE: item: Iron, Vampire_Essence.")
         print("You would input Iron first, then Vampire_Essence, IT WILL NOT WORK THE OTHER WAY!!!! ")
@@ -66,21 +66,21 @@ class craftingfunc():
         can_give_item = False
         if self.item_used == self.recipes[self.chosen_item_index]["recipe"].split():
             for item in self.item_used:
-                if item in player_invetory:
-                    player_invetory.remove(item)
+                if item in player.returnInvetory:
+                    pplayer.returnInvetory.remove(item)
                     can_give_item = True
         else:
             print("you cant  craft it not valid mats or wrong order")
         if can_give_item == True:
-            player_invetory.append(self.recipes[self.chosen_item_index]["item"])
+            player.returnInvetory.append(self.recipes[self.chosen_item_index]["item"])
             print(f" You have crafted {self.recipes[self.chosen_item_index]["item"]}")
             
         
         
         playerinvecopy.clear()
         self.item_used.clear()
-        print(player_invetory)
-crafting = craftingfunc()
-crafting.inputmats()
+        print(player.returnInvetory)
+# crafting = craftingfunc()
+# crafting.inputmats()
            
 

@@ -133,6 +133,6 @@ class battleStuff:
                 quit()
         return player
 
-player = character("player",100,50,50,100,50,1,[],[],["Basic Sword"])
-enemie = mob(1,7,"zombie",20,20,20,25,1,["Iron","Rotten Flesh"],1,None,1,["Bite"])
-player = battleStuff.battle(enemie,player)
+# player = character("player",100,50,50,100,50,1,[],[],["Basic Sword"])
+# enemie = mob(1,7,"zombie",20,20,20,25,1,["Iron","Rotten Flesh"],1,None,1,["Bite"])
+# player = battleStuff.battle(enemie,player)

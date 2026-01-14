@@ -1,8 +1,10 @@
 import random as r
-import combat as combat
-import Enemies as enemies
-import playerClasses as classes
-import 
+from crafting import craftingfunc
+from Enemies import mob
+from playerClasses import character
+from combat import battleStuff
+from randomRoom import roomStuff
+stepsLeft = 7
 classes = [   
         {
         "name":"Melee",
@@ -41,7 +43,6 @@ classes = [
         "moves": ["Stab"]
     }
 ]
-stepsLeft = 7
 bosses = [
     {
         "name":"Giant Zombie",
@@ -118,3 +119,43 @@ mobs = [
         "moves":["Bone Bash","Arrow"]
     }
 ]
+moves = [
+    {
+        "name":"Bite",
+        "dmg":20,
+        "accuracy":1,
+        "type":"undead",
+        "heal":10,
+        "attackChangeS":None,
+        "attackChangeE":None,
+        "defenseChangeS":None,
+        "defenseChangeE":None,
+        "speedChangeS":None,
+        "speedChangeE":None
+    },
+        {
+        "name":"Basic Sword",
+        "dmg":30,
+        "accuracy":1,
+        "type":"normal",
+        "heal": None,
+        "attackChangeS":None,
+        "attackChangeE":None,
+        "defenseChangeS":None,
+        "defenseChangeE":None,
+        "speedChangeS":None,
+        "speedChangeE":None
+    }
+]
+classNames = []
+for i in range(len(classes)):
+    classNames.append(classes[i]["name"])
+
+name = input("What is your name?")
+chosenClass = input(f"What class are you?{classNames} ")
+for I in range(len(classes)):
+    for i in range(len(classes)):
+        if classes[i]["name"] == chosenClass:
+            chosenData = classes[i]
+            player = character(name,chosenData["HP"],chosenData["speed"],chosenData["attack"],chosenData["defense"],chosenData["evasiveness"],chosenData["inventory"],chosenData["equipped"],chosenData["moves"])
+
